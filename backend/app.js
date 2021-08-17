@@ -6,14 +6,6 @@ var logger = require("morgan");
 var cors = require("cors");
 var app = express();
 
-// import routes
-var productsRoute = require("./routes/products");
-var usersRoute = require("./routes/users");
-
-// use routes
-app.use("/api/products", productsRoute);
-app.use("/api/users", usersRoute);
-
 // add middleware
 app.use(
 	cors({
@@ -33,5 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// import routes
+var productsRoute = require("./routes/products");
+var ordersRoute = require("./routes/orders");
+
+// use routes
+app.use("/api/products", productsRoute);
+app.use("/api/orders", ordersRoute);
 
 module.exports = app;
