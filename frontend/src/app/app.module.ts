@@ -1,3 +1,5 @@
+import { HttpClientModule } from '@angular/common/http';
+import { ProductService } from 'src/app/services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -26,9 +28,10 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
