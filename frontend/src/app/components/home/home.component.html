@@ -77,6 +77,19 @@
                   <p>{{product.name | titlecase}}</p>
                 </div>
               </div>
+              <div class="card-body">
+                <h6>{{product.description.substr(0, 25)}} ...</h6>
+                <p class="lead">{{product.price | currency:'USD'}}</p>
+              </div>
+
+              <div class="row d-flex justify-content-center border-primary my-3">
+                <div class="col-md-6">
+                  <button class="btn btn-outline-primary btn-sm btn-block" [class.disabled]="product.quantity < 1" [class.btn-outline-danger]="product.quantity < 1">
+                    {{product.quantity < 1 ? "No Stock" : "Add To Cart"}}
+                  </button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

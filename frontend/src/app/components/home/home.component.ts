@@ -1,3 +1,4 @@
+import { ProductModelServer, ServerResponse } from './../../models/product.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
@@ -9,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class HomeComponent implements OnInit {
 
-  products: any[] = [];
+  products: ProductModelServer[] = [];
 
   constructor(private productService: ProductService, private router: Router) {
   }
