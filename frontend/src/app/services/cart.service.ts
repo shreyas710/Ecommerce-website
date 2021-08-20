@@ -29,7 +29,7 @@ export class CartService {
     total: 0
   };
 
-  cartTotal$ = new BehaviorSubject<Number>(0);
+  cartTotal$ = new BehaviorSubject<number>(0);
   // Data variable to store the cart information on the client's local storage
 
   cartDataObs$ = new BehaviorSubject<CartModelServer>(this.cartDataServer);
@@ -284,6 +284,13 @@ export class CartService {
     });
     this.cartDataServer.total = Total;
     this.cartTotal$.next(this.cartDataServer.total);
+  }
+
+  calculateSubTotal(index: number): number {
+    let sub = 0;
+    const p = this.cartDataServer.data[index];
+    sub = p.product.price * p.numInCart;
+    return sub;
   }
 
   private resetServerData() {
