@@ -3,13 +3,14 @@ export interface ProductModelServer {
   name: string;
   category: string;
   description: string;
-  price: number;
   image: string;
+  price: number;
   quantity: number;
   images: string;
 }
 
+
 export interface ServerResponse {
   count: number;
-  products: ProductModelServer[];
-}
+  products: ProductModelServer[]
+};

@@ -1,32 +1,32 @@
-import { ProductModelServer, ServerResponse } from './../models/product.model';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
+import { Observable } from "rxjs";
+import { ProductModelServer, ServerResponse } from "../models/product.model";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
+  private url = environment.SERVER_URL;
 
-  private SERVER_URL = environment.SERVER_URL;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  // fetch all products from backend server
-  getAllProducts(numberOfResults: number = 10): Observable<ServerResponse> {
-    return this.http.get<ServerResponse>(this.SERVER_URL + `/products`, {
+  getAllProducts(limitOfResults = 10): Observable<ServerResponse> {
+    return this.http.get<ServerResponse>(this.url + 'products', {
       params: {
-        limit: numberOfResults.toString()
+        limit: limitOfResults.toString()
       }
     });
   }
 
-  // get single product from server
-  getSingleProduct(id: number): Observable<ProductModelServer> {
-    return this.http.get<ProductModelServer>(this.SERVER_URL + '/products' + id);
+  getSingleProduct(id: Number): Observable<ProductModelServer> {
+    return this.http.get<ProductModelServer>(this.url + 'products/' + id);
   }
 
-  // get products from one category
-  getProductsFromCategory(catName: string): Observable<ProductModelServer[]> {
-    return this.http.get<ProductModelServer[]>(this.SERVER_URL + '/products/category/' + catName);
+  getProductsFromCategory(catName: String): Observable<ProductModelServer[]> {
+    return this.http.get<ProductModelServer[]>(this.url + 'products/category/' + catName);
   }
+
 }

@@ -1,27 +1,28 @@
-import { Observable } from 'rxjs';
-import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private products: ProductResponseModel[] = [];
-  private SERVER_URL = environment.SERVER_URL
+  products: ProductResponseModel[] = [];
+  ServerURL = environment.SERVER_URL;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getSingleOrder(orderId: number) {
-    return this.http.get<ProductResponseModel[]>(this.SERVER_URL + '/orders' + orderId).toPromise();
+
+  getSingleOrder(orderId: Number) {
+    return this.http.get<ProductResponseModel[]>(`${this.ServerURL}orders/${orderId}`).toPromise();
   }
 }
 
 interface ProductResponseModel {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  quantityOrdered: number;
-  image: string;
+  id: Number;
+  title: String;
+  description: String;
+  price: Number;
+  quantityOrdered: Number;
+  image: String;
 }
