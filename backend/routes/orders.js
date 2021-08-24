@@ -65,6 +65,8 @@ router.get(`/:orderId`, (req, res) => {
 			`p.description`,
 			`p.price`,
 			`u.username`,
+			`p.image`,
+			`od.quantity as quantityOrdered`,
 		])
 		.filter({ "o.id": orderId })
 		.getAll()
