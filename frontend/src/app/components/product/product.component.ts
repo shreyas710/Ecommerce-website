@@ -80,7 +80,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
     if (zoomMainProduct) {
       $('#product-main-img .product-preview').zoom();
     }
-
   }
 
   Increase() {
